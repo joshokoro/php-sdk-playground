@@ -1,0 +1,13 @@
+* text=auto eol=lf
+
+/tests export-ignore
+/scripts export-ignore
+/.github export-ignore
+/.php-cs-fixer.dist.php export-ignore
+/phpunit.xml.dist export-ignore
+/phpstan.neon export-ignore
+/examples export-ignore
+/package.json export-ignore
+/package-lock.json export-ignore
+/.releaserc.json export-ignore
+/openapi.yaml export-ignore

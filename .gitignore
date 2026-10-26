@@ -1,0 +1,21 @@
+# Kiota local logs
+.kiota.log
+**/.kiota.log
+.tools/
+
+# Composer
+vendor/
+
+# Node (release tooling)
+node_modules/
+
+# Environment
+.env
+
+# IDE
+.idea/
+.vscode/
+
+# PHP tooling
+.phpunit.cache
+.php-cs-fixer.cache

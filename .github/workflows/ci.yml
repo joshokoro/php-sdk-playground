@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  pull_request:
+
+jobs:
+  test:
+    name: Test PHP ${{ matrix.php-version }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        php-version: ["8.2", "8.3", "8.4", "8.5"]
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-version }}
+          coverage: none
+          tools: composer:v2
+
+      - name: Validate composer.json
+        run: composer validate --strict
+
+      - name: Install dependencies
+        run: composer install --no-interaction --prefer-dist
+
+      - name: Check formatting
+        run: vendor/bin/php-cs-fixer fix --dry-run --diff
+
+      - name: Static analysis
+        run: vendor/bin/phpstan analyse --no-progress
+
+      - name: Test
+        run: vendor/bin/phpunit
